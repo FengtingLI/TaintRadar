@@ -25,7 +25,7 @@ class ImageDataset(torch.utils.data.Dataset):
             attacked_image = self.transform(attacked_image)
             original_image = self.transform(original_image)
 
-        return attacked_image, original_image
+        return attacked_image * 2 - 1, original_image * 2 - 1
 
     def __len__(self):
         return len(self.attacked_images)

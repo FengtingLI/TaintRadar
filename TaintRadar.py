@@ -16,7 +16,7 @@ from utils import ImageDataset, vgg16_pretrained
 from torchvision import transforms
 from torchvision.models import vgg16
 import matplotlib.pyplot as plt
-
+from keras.applications.vgg16 import preprocess_input
 
 class FeatureExtractor:
     """ Class for extracting activations and
@@ -239,11 +239,17 @@ if __name__ == "__main__":
     ])
     image_path = "images"
     dataset = ImageDataset(root_dir=image_path, transform=transform)
-    loader = torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=False)
+    loader = torch.utils.data.DataLoader(dataset, batch_size=10, shuffle=False)
     taint_radar = TaintRadar(model, use_cuda=True, device='cuda:0', layer='features.29')
 
     result = []
     for attacked_image, original_image in tqdm(loader):
         result.append(taint_radar.process(attacked_image, 9, 2))
 
-    print(np.sum(result), np.sum(result) / len(result))
+    # print(np.sum(result), np.sum(result) / len(result))
+    # for attacked_image, original_image in loader:
+        # _, output = taint_radar.forward(attacked_image.cuda())
+        # print(output.shape, np.argmax(output.detach().cpu().numpy(), axis=-1))
+        # original_image = original_image[:, (2, 1, 0), :, :]
+        # output = model(original_image.cuda())
+        # print(output.shape, np.argmax(output.detach().cpu().numpy(), axis=-1))
