@@ -9,6 +9,7 @@ published at IEEE International Conference on Computer Communications (INFOCOM) 
 Please download the code:
 
 To use our code, first download the repository:
+
 ````
 git clone https://github.com/FengtingLI/TaintRadar.git
 ````
@@ -16,8 +17,30 @@ git clone https://github.com/FengtingLI/TaintRadar.git
 To install the dependencies:
 
 ````
+conda create -n taint_radar -y python=3.7 tensorflow-gpu=1.13 keras=2.3.1
+conda activate taint_radar
 pip install -r requirements.txt
 ````
+
+## Running
+
+We provided an example of our method. The resources (model and images) can be found [here (google drive)](https://drive.google.com/drive/folders/1ChtzopluxJm-wxdPQlfsXJuwx3u0nOrF?usp=sharing). Download
+the .zip files and extract them directly under the main folder, like this:
+
+```
+-> TaintRadar
+    --> models
+        ---> vgg16.h5
+    --> images
+        ---> *.png   # The attacked images
+        ---> *_origin.png # The corresponding original images
+```
+
+Then, run the following code:
+
+```
+python run.py
+```
 
 ## Citation
 
