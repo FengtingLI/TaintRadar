@@ -28,12 +28,12 @@ We provided an example of our method. The resources (model and images) can be fo
 the .zip files and extract them directly under the main folder, like this:
 
 ```
--> TaintRadar
+--> TaintRadar
     --> models
-        ---> vgg16.h5
+        --> vgg16.h5
     --> images
-        ---> *.png   # The attacked images
-        ---> *_origin.png # The corresponding original images
+        --> *.png   # The attacked images
+        --> *_origin.png # The corresponding original images
 ```
 
 Then, run the following code:
